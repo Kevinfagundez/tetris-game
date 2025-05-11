@@ -1,0 +1,178 @@
+:root {
+  /* Colores principales */
+  --color-fondo: rgba(34, 34, 34, 1); /* #222: Fondo principal de la página */
+  --color-texto: rgba(255, 255, 255, 1); /* blanco: Texto principal */
+  --color-titulo: rgba(0, 230, 118, 1); /* #00e676: Color de los títulos y puntos */
+  --color-celda: rgba(17, 17, 17, 1); /* #111: Color de fondo de las celdas del tablero */
+  --color-borde-tablero: rgba(0, 230, 118, 1); /* #00e676: Borde del tablero */
+  
+  /* Colores de los bloques */
+  --color-bloque-rojo: rgba(244, 67, 54, 1); /* #f44336: Bloques rojos */
+  --color-bloque-azul: rgba(33, 150, 243, 1); /* #2196F3: Bloques azules */
+  --color-bloque-verde: rgba(76, 175, 80, 1); /* #4CAF50: Bloques verdes */
+  --color-bloque-amarillo: rgba(255, 235, 59, 1); /* #FFEB3B: Bloques amarillos */
+  --color-bloque-naranja: rgba(255, 152, 0, 1); /* #FF9800: Bloques naranjas */
+  --color-bloque-purpura: rgba(156, 39, 176, 1); /* #9C27B0: Bloques morados */
+  --color-bloque-cyan: rgba(0, 188, 212, 1); /* #00BCD4: Bloques cian */
+  
+  /* Colores adicionales */
+  --color-footer: rgba(10, 20, 40, 0.85); /* Fondo del footer */
+  --color-text-footer: rgba(224, 224, 255, 1); /* Texto del footer */
+  --color-gameover: rgba(255, 76, 76, 1); /* #ff4c4c: Mensaje de "Game Over" */
+}
+
+body {
+  background-color: var(--color-fondo);
+  background-image: url('/img/fondo-tetris.jpg'); 
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  color: var(--color-texto);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* TÍTULOS Y PUNTOS */
+h1 {
+  margin-top: 60px; 
+  margin-bottom: 10px;
+  font-size: 32px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+#score {
+  margin-top: 10px; 
+  margin-bottom: 30px; 
+  color: var(--color-titulo);
+  font-size: 32px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* TABLERO DE JUEGO */
+#game {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(20, 30px);
+  gap: 1px;
+  background-color: rgba(51, 51, 51, 0.8); 
+  border: 4px solid var(--color-borde-tablero);
+  border-radius: 10px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+/* CELDAS DEL JUEGO */
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-celda);
+  border: 1px solid rgba(34, 34, 34, 1);
+  box-sizing: border-box;
+}
+
+/* ESTILOS DE LOS BLOQUES */
+.cell.tetromino {
+  background-color: var(--color-bloque-rojo);
+}
+
+.cell.tetromino.blue {
+  background-color: var(--color-bloque-azul);
+}
+
+.cell.tetromino.green {
+  background-color: var(--color-bloque-verde);
+}
+
+.cell.tetromino.yellow {
+  background-color: var(--color-bloque-amarillo);
+}
+
+.cell.tetromino.orange {
+  background-color: var(--color-bloque-naranja);
+}
+
+.cell.tetromino.purple {
+  background-color: var(--color-bloque-purpura);
+}
+
+.cell.tetromino.cyan {
+  background-color: var(--color-bloque-cyan);
+}
+
+.cell.tetromino.red {
+  background-color: var(--color-bloque-rojo);
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-footer);
+  color: var(--color-text-footer);
+  text-align: center;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 300;
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+}
+
+/* GAME OVER */
+#gameOverMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(60, 60, 60, 0.9));
+  color: var(--color-gameover);
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+  border: 2px solid var(--color-gameover);
+  animation: popIn 0.4s ease-out;
+}
+
+/* Animación */
+@keyframes popIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+#restartGame {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--color-gameover);
+  color: var(--color-texto);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 76, 76, 0.4);
+}
+
+#restartGame:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(255, 76, 76, 0.6);
+}

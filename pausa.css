@@ -1,0 +1,23 @@
+#pauseMessage {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(50,50,50,0.9));
+  color: red;
+  text-align: center;
+  font-size: 36px;
+  padding: 25px 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+  backdrop-filter: blur(6px);
+  border: 2px solid red;
+  transition: all 0.3s ease-in-out;
+}
